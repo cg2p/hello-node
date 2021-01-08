@@ -1,0 +1,23 @@
+{
+  "name": "hello-node",
+  "version": "1.0.0",
+  "description": "simplest hello world app in NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cg2p/hello-node.git"
+  },
+  "keywords": [
+    "hello"
+  ],
+  "author": "cg2p",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cg2p/hello-node/issues"
+  },
+  "homepage": "https://github.com/cg2p/hello-node#readme"
+}
