@@ -1,6 +1,13 @@
 # exploration tests for portable deployment to OpenShift
 
-##
+## Local Command Line
+Local development run
+```
+npm run start
+```
+test http://localhost:3000
+
+## Local Docker
 ```
 docker build -t hello-node:1.0 .
 ```
@@ -12,16 +19,24 @@ docker run -p 3001:3000 --detach --name hello-node hello-node:1.0
 ```
 test http://localhost:3001
 
-## `oc new-app` process
+## OpenShift Cluster
+Use the `oc new-app` process.
+- login to OpenShift cluster
 
 
-port 3000 in code
+For simple Node app in [repo](https://github.com/cg2p/hello-node) the app server listens on port 3000 
+
 ```
+# Create a new project
 oc new-project hello-node
 
 # not using nodejs~https://github.com/cg2p/hello-node.git
 # detects EXPOSE in Dockerfile and sets Target Port in Route (which is the port the app in container is lisenting on)
 oc new-app https://github.com/cg2p/hello-node.git
+
+# EXPOSE is good for inter-container communication
+# if Dockerfile EXPOSE is not set then
+oc expose dc/hello-node --port=3000
 
 # creates the following:
 # Namespace = hello-node (Kubenetes spec)
