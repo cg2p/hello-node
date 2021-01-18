@@ -7,6 +7,7 @@ In order to be portable to its environment the server does not bind to a particu
 Test the web server by running from the command line
 ```
 cd <your hello-node directory>
+npm install
 npm run start
 ```
 Test running at `http://localhost:3000`
