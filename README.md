@@ -26,6 +26,6 @@ Test running at `http://localhost:3001`
 
 
 ## OpenShift Deployment
-In the [OpenShift document](OPENSHIFT.md) there are instructions for:
+In the [OpenShift document](./OPENSHIFT.md) there are instructions for:
 - deployment of the app to OpenShift cluster using `oc new-app`
 
