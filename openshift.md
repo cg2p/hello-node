@@ -1,31 +1,13 @@
 # OpenShift
-Walkthrough of building the app from source and deploying to an OpenShift cluster using `oc new-app`
+Walkthrough of building the app from source and deploying to an OpenShift cluster using the `oc new-app` process.
 
-## Local Command Line
-Local development run
-```
-npm run start
-```
-test http://localhost:3000
+## 1. OpenShift Cluster
+First login to your OpenShift cluster
+- if you are using OpenShift on cloud provider account then login to that e.g. `ic login --sso` for corporate login to an IBM Cloud account
+- login to your OpenShift cluster (`oc login`) e.g. if deplouing to a cloud account provider then this might use OAuth Token Request details
 
-## Local Docker
-```
-docker build -t hello-node:1.0 .
-```
-now prove that we are not running the dev command line version which is the app listening on port 3000
-now we are running the container, expose port 3000 of the app running inside the container
-and expose it to the local machine via port 3001
-```
-docker run -p 3001:3000 --detach --name hello-node hello-node:1.0
-```
-test http://localhost:3001
-
-## OpenShift Cluster
-Use the `oc new-app` process.
-- login to OpenShift cluster
-
-
-For simple Node app in [repo](https://github.com/cg2p/hello-node) the app server listens on port 3000 
+## 2. Create the Deployment
+The simple `hello-node` app in [repo](https://github.com/cg2p/hello-node) is a web app lisenting on port 3000 
 ```
 # Create a new project
 oc new-project hello-node
@@ -33,40 +15,47 @@ oc new-project hello-node
 # not using nodejs~https://github.com/cg2p/hello-node.git
 # detects EXPOSE in Dockerfile and sets Target Port in Route (which is the port the app in container is lisenting on)
 oc new-app https://github.com/cg2p/hello-node.git
+
 # creates the following:
 # Namespace = hello-node (Kubenetes spec)
-# Deployment Config = hello-node (OpenShift spec)
-```
-
-
-```
-# EXPOSE is good for inter-container communication
-# if Dockerfile EXPOSE is not set then
-oc expose dc/hello-node --port=3000
-
 # Service = hello-node (Kubernetes spec)
+# Deployment Config = hello-node (OpenShift spec)
+# plus OpenShift spins up the pods, and creates necessary ConfigMaps (Kubernetes spec)
 ```
 
+## 3. Expose access to the app
+If the Dockerfile has EXPOSE set, then the `oc new-app` build and deploy detects and the Service/hello-node will load balance against that exposed port (which is what the NodeJS server code is listening on).
+
+EXPOSE is not mandatory but helps setup for inter-container communication, but also serves as a description that processes like `oc new-app` can use to generate the deploymeny.
+
+If the Dockerfile EXPOSE is not set then
+```
+# if Dockerfile EXPOSE is NOT set then
+oc expose dc/hello-node --port=3000
+```
+
+Now create a Route to expose the Service/hello-node
 ```
 # --name sets the name of the Route that is created
 # Route = hello-node-route (OpenShift spec)
 oc expose svc/hello-node --name=hello-node-route 
-
-oc status 
-# get the URL to call
 ```
 
+Then get the URL the service is available on
+```
+oc status 
+```
 
+Returns the URL of the exposed app to call via browser or curl
+```
+> In project hello-node on server https://url-of-your-openshift-cluster
 
+> http://url-of-the-route-to-your-app to pod port 3000-tcp (svc/hello-node)
+  dc/hello-node deploys istag/hello-node:latest <-
+    bc/hello-node docker builds https://github.com/cg2p/hello-node.git on istag/node:10-alpine 
+    deployment #1 deployed 6 minutes ago - 1 pod
 
+curl http://url-of-the-route-to-your-app 
 
-
-
-
-
-
-
-## other cmds
-oc expose service reverse-with-nextjs-material --name=reverse-app-service --port=3000 --protocol="TCP" --generator="service/v2"
-oc patch service reverse-app-service --port=3000 --protocol="TCP" --generator="service/v2"
- 
+> Hello World !
+```
