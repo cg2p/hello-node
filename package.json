@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/cg2p/hello-node/issues"
   },
-  "homepage": "https://github.com/cg2p/hello-node#readme"
+  "homepage": "https://github.com/cg2p/hello-node#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
 }

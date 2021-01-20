@@ -59,3 +59,6 @@ curl http://url-of-the-route-to-your-app
 
 > Hello World !
 ```
+
+## References
+Example template file for `oc new-app` for [Node and Mongo app](https://github.com/openshift/origin/blob/master/examples/quickstarts/nodejs-mongodb.json)
