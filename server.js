@@ -2,7 +2,7 @@ require('dotenv').config();
 
 var http = require('http');
 
-const port = 3000;
+const port = process.env.SERVER_PORT || 3000;
 
 const myvar = process.env.MYVAR || 'default';
 
