@@ -34,8 +34,8 @@
         "ports": [
           {
             "name": "web",
-            "port": "${SERVER_PORT}",
-            "targetPort": "${SERVER_PORT}"
+            "port": "${{SERVER_PORT}}",
+            "targetPort": "${{SERVER_PORT}}"
           }
         ],
         "selector": {
@@ -183,7 +183,7 @@
                 "image": " ",
                 "ports": [
                   {
-                    "containerPort": "${SERVER_PORT}"
+                    "containerPort": "${{SERVER_PORT}}"
                   }
                 ],
                 "readinessProbe": {
@@ -191,7 +191,7 @@
                   "initialDelaySeconds": 3,
                   "httpGet": {
                     "path": "/",
-                    "port": "${SERVER_PORT}"
+                    "port": 8080
                   }
                 },
                 "livenessProbe": {
@@ -199,7 +199,7 @@
                     "initialDelaySeconds": 30,
                     "httpGet": {
                         "path": "/",
-                        "port": "${SERVER_PORT}"
+                        "port": 8080
                     }
                 },
                 "resources": {

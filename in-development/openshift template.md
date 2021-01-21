@@ -2,8 +2,11 @@
 
 https://github.com/sclorg/nodejs-ex/blob/master/openshift/templates/nodejs.json
 
+oc new-project hello2
 oc new-app -f ./hello-node-template.json \
     -p NAME=hello2 -p MYVAR=amazing -p SERVER_PORT=3002
+oc create secret generic hello2-secret --from-literal=MYVAR=MyBigSecret
+oc set env --from=secret/hello2-secret dc/hello2
 
 oc new-app ruby-helloworld-sample \
     -p ADMIN_USERNAME=admin,ADMIN_PASSWORD=mypassword

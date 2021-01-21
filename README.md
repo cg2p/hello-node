@@ -4,7 +4,7 @@ This is the simplest of NodeJS app to say "Hello World !".
 In order to be portable to its environment the server does not bind to a particular host, but simply listens on port 3000.
 
 ## Local Development
-Test the web server by running from the command line
+Clone the repository. Test the web server by running from the command line
 ```
 cd <your hello-node directory>
 npm install
