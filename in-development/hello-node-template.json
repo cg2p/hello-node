@@ -191,7 +191,7 @@
                   "initialDelaySeconds": 3,
                   "httpGet": {
                     "path": "/",
-                    "port": 8080
+                    "port": "${{SERVER_PORT}}"
                   }
                 },
                 "livenessProbe": {
