@@ -216,6 +216,10 @@
                               "name": "${NAME}-secret"
                           }
                       }
+                  },
+                  {
+                    "name": "MYVISIBLEVAR",
+                    "value": "${MYVISIBLEVAR}"
                   }
               ]
               }

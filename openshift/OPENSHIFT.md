@@ -60,5 +60,25 @@ curl http://url-of-the-route-to-your-app
 > Hello World !
 ```
 
+## 4. Templates
+A basic NodeJS OpenShift template. The app server looks for two environment variables:
+- MYVISIBLEVAR is set on the `oc new-app` build and deploy action.
+- MYSECRETVAR is set via the kubernetes Secret
+
+The secret is created and applied to the DeploymentConfig causing the pods to restart and pick up the Secret and then the env var.
+```
+oc new-project hello2
+oc new-app -f ./hello-node-template.json \
+    -p NAME=hello2 -p MYVISIBLEVAR=amazing -p SERVER_PORT=3000
+oc create secret generic hello2-secret --from-literal=MYSECRETVAR=MyBigSecret
+oc set env --from=secret/hello2-secret dc/hello2
+```
+
+
 ## References
 Example template file for `oc new-app` for [Node and Mongo app](https://github.com/openshift/origin/blob/master/examples/quickstarts/nodejs-mongodb.json)
+
+[Main samples repo](https://github.com/sclorg/nodejs-ex/blob/master/openshift/templates/nodejs.json) for basic Node all from Red Hat
+
+Back level, but explains concepts [article on template development](http://v1.uncontained.io/playbooks/fundamentals/template_development_guide.html)
+
