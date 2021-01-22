@@ -22,7 +22,7 @@ The build creation process creates a DeploymentConfig object (OpenShift spec) an
 
 ```
 oc new-project hello-node
-oc new-app https://github.com/cg2p/hello-node.git -e MYVAR=NoSecret
+oc new-app https://github.com/cg2p/hello-node.git -e MYVISIBLEVAR=var-set-from-oc-new-app-call
 oc expose svc/hello-node --name=hello-node-route
 ```
 
@@ -35,7 +35,7 @@ After build create a Kubernetes secret to hold the environment variable of MYVAR
 ```
 oc new-project hello-node
 oc new-app https://github.com/cg2p/hello-node.git
-oc create secret generic hello-node-secret --from-literal=MYVAR=BigSecret
+oc create secret generic hello-node-secret --from-literal=MYSECRETVAR=BigSecret
 oc set env --from=secret/hello-node-secret dc/hello-node
 oc expose svc/hello-node --name=hello-node-route
 ```

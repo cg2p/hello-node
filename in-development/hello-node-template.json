@@ -199,7 +199,7 @@
                     "initialDelaySeconds": 30,
                     "httpGet": {
                         "path": "/",
-                        "port": 8080
+                        "port": "${{SERVER_PORT}}"
                     }
                 },
                 "resources": {
@@ -209,10 +209,10 @@
                 },
                 "env": [
                   {
-                      "name": "MYVAR",
+                      "name": "MYSECRETVAR",
                       "valueFrom": {
                           "secretKeyRef": {
-                              "key": "MYVAR",
+                              "key": "MYSECRET",
                               "name": "${NAME}-secret"
                           }
                       }

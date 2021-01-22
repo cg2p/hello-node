@@ -14,7 +14,7 @@ oc new-app ruby-helloworld-sample \
 
 oc get --export bc,is,dc,route,svc,sc -l app=hello-node --as-template='my-node-template'
 oc get bc,is,dc,route,svc,sc -o yaml > hello-dc.yaml
-oc get all -o yaml > hello-dc.yaml
+oc get all -o yaml > hello-node.yaml
 
 
 ## Reference
