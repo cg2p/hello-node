@@ -24,3 +24,5 @@ server.listen(port, () => {
   console.log("- env MYSECRETVAR=%s", mysecretvar);
   console.log("Server listening on %s", port);
 });
+
+module.exports = server;

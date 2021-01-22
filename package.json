@@ -4,7 +4,7 @@
   "description": "simplest hello world app in NodeJS",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "SERVER_PORT=3000 mocha --timeout 5000 test/*_test.js",
     "build": "npm install",
     "start": "node server.js"
   },
@@ -22,6 +22,9 @@
   },
   "homepage": "https://github.com/cg2p/hello-node#readme",
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "mocha": "^8.2.1"
   }
 }

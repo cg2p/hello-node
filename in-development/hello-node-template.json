@@ -212,7 +212,7 @@
                       "name": "MYSECRETVAR",
                       "valueFrom": {
                           "secretKeyRef": {
-                              "key": "MYSECRET",
+                              "key": "MYSECRETVAR",
                               "name": "${NAME}-secret"
                           }
                       }
@@ -259,7 +259,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/sclorg/nodejs-ex.git"
+      "value": "https://github.com/cg2p/hello-node.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
@@ -305,8 +305,8 @@
       "value": "3001"
     },
     {
-      "name": "MYVAR",
-      "displayName": "MyVar",
+      "name": "MYVISIBLEVAR",
+      "displayName": "MyVisibleVar",
       "description": "A custom env var for the Hello World message",
       "required": true,
       "value": "unset"

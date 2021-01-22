@@ -14,7 +14,7 @@ oc expose svc/hello-node --name=hello-node-route
 ```
 
 Browse server at the Route URL
-> Web page displays MYVAR=default
+> Web page displays MYVISIBLEVAR=default, MYSECRETVAR=unset
 
 
 ## Set environment variable in build creation
@@ -30,7 +30,7 @@ Browse server at the Route URL
 > Web page displays MYVAR=nosecret
 
 ## Set environment variable through a Secret post-build
-After build create a Kubernetes secret to hold the environment variable of MYVAR=BigSecret
+After build create a Kubernetes secret to hold the environment variable of MYSECRETVAR=BigSecret
 
 ```
 oc new-project hello-node
