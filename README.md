@@ -1,4 +1,4 @@
-# Hello Node
+# Hello Node.
 This is the simplest of NodeJS app to say "Hello World !".
 
 In order to be portable to its environment the server does not bind to a particular host, but simply listens on port 3000.
