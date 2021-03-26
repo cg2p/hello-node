@@ -4,7 +4,7 @@ Walkthrough of building the app from source and deploying to an OpenShift cluste
 ## 1. OpenShift Cluster
 First login to your OpenShift cluster
 - if you are using OpenShift on cloud provider account then login to that e.g. `ic login --sso` for corporate login to an IBM Cloud account
-- login to your OpenShift cluster (`oc login`) e.g. if deplouing to a cloud account provider then this might use OAuth Token Request details
+- login to your OpenShift cluster (`oc login`) e.g. if deploying to a cloud account provider then this might use OAuth Token Request details
 
 ## 2. Create the Deployment
 The simple `hello-node` app in [repo](https://github.com/cg2p/hello-node) is a web app lisenting on port 3000 
