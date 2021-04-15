@@ -74,6 +74,44 @@ oc create secret generic hello2-secret --from-literal=MYSECRETVAR=MyBigSecret
 oc set env --from=secret/hello2-secret dc/hello2
 ```
 
+## `oc new-app` build strategy
+
+1. Type of Build - Source or Docker
+if new-app finds a Dockerfile, then build strategy is Docker
+a Docker build strategy invokes plain Docker build
+
+
+
+`--strategy=: Specify the build strategy to use if you don't want to detect (docker|source)` (note: pipepline option is deprecated)
+
+oc new-project hello-node
+oc new-app https://github.com/cg2p/hello-node.git --strategy=source
+
+--> Found image 302af44 (6 weeks old) in image stream "openshift/nodejs" under tag "14-ubi8" for "nodejs"
+
+    Node.js 14 
+    ---------- 
+    Node.js 14 available as container is a base platform for building and running various Node.js 14 applications and frameworks. Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+
+    Tags: builder, nodejs, nodejs14
+
+    * The source repository appears to match: nodejs
+    * A source build using source code from https://github.com/cg2p/hello-node.git will be created
+      * The resulting image will be pushed to image stream tag "hello-node:latest"
+      * Use 'oc start-build' to trigger a new build
+
+--> Creating resources ...
+    imagestream.image.openshift.io "hello-node" created
+    buildconfig.build.openshift.io "hello-node" created
+    deployment.apps "hello-node" created
+    service "hello-node" created
+--> Success
+    Build scheduled, use 'oc logs -f buildconfig/hello-node' to track its progress.
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose service/hello-node' 
+    Run 'oc status' to view your app.
+
+
 
 ## References
 Example template file for `oc new-app` for [Node and Mongo app](https://github.com/openshift/origin/blob/master/examples/quickstarts/nodejs-mongodb.json)
