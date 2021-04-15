@@ -130,9 +130,11 @@ OpenShift CRD
 ## References
 1. [Kubernetes Ingress vs OpenShift Route](https://www.openshift.com/blog/kubernetes-ingress-vs-openshift-route)
 
-2. Example template file for `oc new-app` for [Node and Mongo app](https://github.com/openshift/origin/blob/master/examples/quickstarts/nodejs-mongodb.json)
+2. [ImageStream benefits explaination](https://cloudowski.com/articles/why-managing-container-images-on-openshift-is-better-than-on-kubernetes/)
 
-3. [Main samples repo](https://github.com/sclorg/nodejs-ex/blob/master/openshift/templates/nodejs.json) for basic Node all from Red Hat
+3. Example template file for `oc new-app` for [Node and Mongo app](https://github.com/openshift/origin/blob/master/examples/quickstarts/nodejs-mongodb.json)
 
-4. Back level, but explains concepts [article on template development](http://v1.uncontained.io/playbooks/fundamentals/template_development_guide.html)
+4. [Main samples repo](https://github.com/sclorg/nodejs-ex/blob/master/openshift/templates/nodejs.json) for basic Node all from Red Hat
+
+5. Back level, but explains concepts [article on template development](http://v1.uncontained.io/playbooks/fundamentals/template_development_guide.html)
 
