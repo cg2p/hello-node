@@ -90,6 +90,8 @@ oc create secret generic hello2-secret --from-literal=MYSECRETVAR=MyBigSecret
 oc set env --from=secret/hello2-secret dc/hello2
 ```
 
+Templates give you the opportunity to set up specifics for your application that get created in its project. This include specifics around how the app is built and image management and build triggers.
+
 ## 5. Understanding the CRDs
 Objects of Kubernetes and OpenShift specific CRD types created during `oc new-app` inner loop process.
 ```
@@ -128,13 +130,15 @@ OpenShift CRD
 
 
 ## References
-1. [Kubernetes Ingress vs OpenShift Route](https://www.openshift.com/blog/kubernetes-ingress-vs-openshift-route)
+- [Kubernetes Ingress vs OpenShift Route](https://www.openshift.com/blog/kubernetes-ingress-vs-openshift-route)
 
-2. [ImageStream benefits explaination](https://cloudowski.com/articles/why-managing-container-images-on-openshift-is-better-than-on-kubernetes/)
+- [ImageStream benefits explaination](https://cloudowski.com/articles/why-managing-container-images-on-openshift-is-better-than-on-kubernetes/)
 
-3. Example template file for `oc new-app` for [Node and Mongo app](https://github.com/openshift/origin/blob/master/examples/quickstarts/nodejs-mongodb.json)
+- [Understanding containers, images, and imagestreams](https://docs.openshift.com/container-platform/4.6/openshift_images/images-understand.html)
 
-4. [Main samples repo](https://github.com/sclorg/nodejs-ex/blob/master/openshift/templates/nodejs.json) for basic Node all from Red Hat
+- Example template file for `oc new-app` for [Node and Mongo app](https://github.com/openshift/origin/blob/master/examples/quickstarts/nodejs-mongodb.json)
 
-5. Back level, but explains concepts [article on template development](http://v1.uncontained.io/playbooks/fundamentals/template_development_guide.html)
+- [Main samples repo](https://github.com/sclorg/nodejs-ex/blob/master/openshift/templates/nodejs.json) for basic Node all from Red Hat
+
+- Back level, but explains concepts [article on template development](http://v1.uncontained.io/playbooks/fundamentals/template_development_guide.html)
 
