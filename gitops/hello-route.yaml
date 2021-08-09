@@ -1,13 +1,11 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  labels:
-    app: hello-node-app
-  name: hello-node-app
+  name: hello-dev-route
+  namespace: dev
 spec:
-  port:
-    targetPort: 3000-tcp
   to:
     kind: Service
     name: hello-node-app
-    weight: 100
+  port:
+    targetPort: 3000-tcp
