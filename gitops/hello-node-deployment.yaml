@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-node-app
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: hello-node-app
+  template:
+    metadata:
+      labels:
+        app: hello-node-app
+    spec:
+      containers:
+      - image: docker.io/cg2p/hello-node:1.0
+        name: hello-node-app
+        ports:
+        - containerPort: 3000

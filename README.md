@@ -25,6 +25,10 @@ docker run -p 3001:3000 --detach --name hello-node hello-node:1.0
 ```
 Test running at `http://localhost:3001`
 
+You can also push the image to your repo
+```
+docker push <your repo>/hello-node:1.0
+```
 
 ## OpenShift Deployment
 In the [OpenShift folder](openshift) there are instructions for:
